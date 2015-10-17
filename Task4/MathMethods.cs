@@ -14,7 +14,7 @@ namespace Task4
         /// <returns></returns>
         public static double RootByNewtonMethod(double a, int power, double precision)
         {
-            if (precision > 1 || precision < 0)
+            if (precision >= 1 || precision <= 0)
                 throw new ArgumentException();
             if (a < 0)
                 throw new ArgumentException();
