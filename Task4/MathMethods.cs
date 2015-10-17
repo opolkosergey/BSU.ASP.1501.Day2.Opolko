@@ -20,11 +20,11 @@ namespace Task4
                 throw new ArgumentOutOfRangeException();
             if (Math.Abs(a) < precision)
                 return 0;
-            if (power == 0)
+            if (power <= 0)
                 throw new ArgumentOutOfRangeException();
 
-            double possibleResult = 1;
-            double intermediateResult = Math.Pow(possibleResult, power);
+            double possibleResult = 1.0;
+            var intermediateResult = Math.Pow(possibleResult, power);
 
             while (Math.Abs(a - intermediateResult) > precision)
             {
@@ -82,7 +82,7 @@ namespace Task4
             int mod = 0;
             do
             {
-                mod = GetRemain(a, b);
+                mod = a % b;
                 a = b;
                 b = mod;
             } while (mod != 0);
@@ -102,11 +102,6 @@ namespace Task4
             return Math.Abs(gcd);
         }
 
-        private static int GetRemain(int a, int b)
-        {
-            int quotient = a / b;
-            return a - quotient * b;
-        }
         #endregion
     }
 }
