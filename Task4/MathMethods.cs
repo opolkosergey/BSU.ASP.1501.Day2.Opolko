@@ -14,12 +14,14 @@ namespace Task4
         /// <returns></returns>
         public static double RootByNewtonMethod(double a, int power, double precision)
         {
-            if (precision >= 1 || precision <= 0)
-                throw new ArgumentException();
+            if (precision > 1 || precision < 1E-16)
+                throw new ArgumentOutOfRangeException();
             if (a < 0)
-                throw new ArgumentException();
-            if (power < 1)
-                throw new ArgumentException();
+                throw new ArgumentOutOfRangeException();
+            if (Math.Abs(a) < precision)
+                return 0;
+            if (power == 0)
+                throw new ArgumentOutOfRangeException();
 
             double possibleResult = 1;
             double intermediateResult = Math.Pow(possibleResult, power);
@@ -62,6 +64,9 @@ namespace Task4
             return result;
         }
 
+
+
+        #region Private methods
         private static int Gcd(int a, int b)
         {
             if (a == 0 || b == 0)
@@ -102,5 +107,6 @@ namespace Task4
             int quotient = a / b;
             return a - quotient * b;
         }
+        #endregion
     }
 }
