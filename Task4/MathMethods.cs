@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 
-
 namespace Task4
 {
     public static class MathMethods
     {
+        #region Public methods
         /// <summary>
         /// Method of calculating the root of the n-th degree among the Newton method with a given accuracy
         /// </summary>
@@ -16,13 +16,13 @@ namespace Task4
         public static double RootByNewtonMethod(double a, int power, double precision)
         {
             if (precision > 1 || precision < 1E-16)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(precision));
             if (a < 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(a));
             if (Math.Abs(a) < precision)
                 return 0;
             if (power <= 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(power));
 
             double possibleResult = 1.0;
             var intermediateResult = Math.Pow(possibleResult, power);
@@ -94,6 +94,7 @@ namespace Task4
             ticks = watch.ElapsedTicks;
             return result;
         }
+        #endregion
 
         #region Private methods
         private static int BinaryGcd(int a, int b)
@@ -138,7 +139,7 @@ namespace Task4
         private static int Gcd(int a, int b)
         {
             if (a == 0 || b == 0)
-                throw new ArgumentException();
+                throw new ArgumentException("Invalid arguments" + nameof(a) + "or" + nameof(b));
 
             if (a < b)
             {
@@ -169,7 +170,6 @@ namespace Task4
 
             return Math.Abs(gcd);
         }
-
         #endregion
     }
 }
