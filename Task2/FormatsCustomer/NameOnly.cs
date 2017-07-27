@@ -3,6 +3,7 @@
     public class NameOnly : IFormatCustomer
     {
         private Customer _customer;
+
         public NameOnly(Customer customer)
         {
             _customer = customer;

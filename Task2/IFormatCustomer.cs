@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Task2
+﻿namespace Task2
 {
-    public interface IFormatCustomer  
+	public interface IFormatCustomer  
     {
         string GetFormatConsumer();
     }

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace Task2
 {
     public class Customer
     {
         public string Name { get; set; }
+
         public string ContactPhone { get; set; }
+
         public decimal Revenue { get; set; }
 
         public Customer()
@@ -25,15 +26,15 @@ namespace Task2
 
         public string ToString(params IFormatCustomer[] formatsCustomers)
         {
-            var s = new StringBuilder();
+            var stringBuilder = new StringBuilder();
 
             foreach (IFormatCustomer format in formatsCustomers)
             {
-                s.Append(format.GetFormatConsumer());
-                s.Append(' ');
+                stringBuilder.Append(format.GetFormatConsumer());
+                stringBuilder.Append(' ');
             }
                 
-            return s.ToString();
+            return stringBuilder.ToString();
         }
     }
 }

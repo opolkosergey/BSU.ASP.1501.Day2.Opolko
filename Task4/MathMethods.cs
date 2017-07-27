@@ -6,6 +6,7 @@ namespace Task4
     public static class MathMethods
     {
         #region Public methods
+
         /// <summary>
         /// Method of calculating the root of the n-th degree among the Newton method with a given accuracy
         /// </summary>
@@ -15,14 +16,25 @@ namespace Task4
         /// <returns></returns>
         public static double RootByNewtonMethod(double a, int power, double precision)
         {
-            if (precision > 1 || precision < 1E-16)
-                throw new ArgumentOutOfRangeException(nameof(precision));
-            if (a < 0)
-                throw new ArgumentOutOfRangeException(nameof(a));
-            if (Math.Abs(a) < precision)
-                return 0;
-            if (power <= 0)
-                throw new ArgumentOutOfRangeException(nameof(power));
+	        if (precision > 1 || precision < 1E-16)
+	        {
+		        throw new ArgumentOutOfRangeException(nameof(precision));
+	        }
+
+	        if (a < 0)
+	        {
+		        throw new ArgumentOutOfRangeException(nameof(a));
+	        }
+
+	        if (Math.Abs(a) < precision)
+	        {
+		        return 0;
+	        }
+
+	        if (power <= 0)
+	        {
+		        throw new ArgumentOutOfRangeException(nameof(power));
+	        }
 
             double possibleResult = 1.0;
             var intermediateResult = Math.Pow(possibleResult, power);
@@ -32,6 +44,7 @@ namespace Task4
                 possibleResult = ((power - 1) * possibleResult + a / Math.Pow(possibleResult, power - 1)) / power;
                 intermediateResult = Math.Pow(possibleResult, power);
             }
+
             return possibleResult;
         }
 
@@ -39,9 +52,12 @@ namespace Task4
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
+
             var result = Gcd(a, b);
+
             watch.Stop();
             ticks = watch.ElapsedTicks;
+
             return result;
         }
 
@@ -49,9 +65,12 @@ namespace Task4
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
+
             var result = Gcd(a, b, c);
+
             watch.Stop();
             ticks = watch.ElapsedTicks;
+
             return result;
         }
 
@@ -59,9 +78,12 @@ namespace Task4
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
+
             var result = Gcd(valuesInts);
+
             watch.Stop();
             ticks = watch.ElapsedTicks;
+
             return result;
         }
 
@@ -69,9 +91,12 @@ namespace Task4
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
+
             var result = BinaryGcd(a, b);
+
             watch.Stop();
             ticks = watch.ElapsedTicks;
+
             return result;
         }
 
@@ -82,6 +107,7 @@ namespace Task4
             var result = BinaryGcd(a, b, c);
             watch.Stop();
             ticks = watch.ElapsedTicks;
+
             return result;
         }
 
@@ -92,8 +118,10 @@ namespace Task4
             var result = BinaryGcd(valuesInts);
             watch.Stop();
             ticks = watch.ElapsedTicks;
+
             return result;
         }
+
         #endregion
 
         #region Private methods
@@ -138,8 +166,10 @@ namespace Task4
 
         private static int Gcd(int a, int b)
         {
-            if (a == 0 || b == 0)
-                throw new ArgumentException("Invalid arguments" + nameof(a) + "or" + nameof(b));
+	        if (a == 0 || b == 0)
+	        {
+		        throw new ArgumentException("Invalid arguments" + nameof(a) + "or" + nameof(b));
+	        }
 
             if (a < b)
             {
@@ -148,7 +178,7 @@ namespace Task4
                 b = c;
             }
 
-            int mod = 0;
+            int mod;
             do
             {
                 mod = a % b;
@@ -170,6 +200,7 @@ namespace Task4
 
             return Math.Abs(gcd);
         }
+
         #endregion
     }
 }
